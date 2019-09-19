@@ -67,7 +67,7 @@ class StudentController extends Controller
         $feedback = DB::table('agent_feedback')->where('agent_id', '=', $request->agentId)
             ->where('feedback_giver_id', '=', $request->studentId)->first();
 
-        if ($feedback->count() >= 1) {
+        if (isset($feedback)) {
             return response()->json(['status' => 'error', 'error' => 'Feedback already given for that agent'], 200);
         } else {
 
