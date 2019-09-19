@@ -107,16 +107,14 @@ class UserController extends Controller
 
     }
 
-    public function agentFeedback($id)
+    public function agentFeedback(Request $request)
     {
-        $feedback = DB::table('agent_feedback')->where('agent_id', '=', $id)
+        $feedback = DB::table('agent_feedback')->where('agent_id', '=', $request->id)
             ->get();
 
         if (isset($feedback)) {
             return response()->json([
                 'status' => 'success',
-                'id' => $id,
-                'feedbackTest' => $feedback,
                 'feedbacks' => $feedback->toArray()
             ], 200);
         }
