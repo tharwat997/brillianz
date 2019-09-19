@@ -31,7 +31,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::get('users/{id}', 'UserController@show');
-Route::get('users/{id}/agent/feedback', 'UserController@agentFeedback');
+Route::get('users/agent/feedback', 'UserController@agentFeedback');
 
 Route::prefix('admin')->group(function () {
 
