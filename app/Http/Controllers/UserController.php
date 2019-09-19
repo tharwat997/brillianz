@@ -115,7 +115,7 @@ class UserController extends Controller
         if (isset($feedback)) {
             return response()->json([
                 'status' => 'success',
-                'agentId' => $request->agentId,
+                'agentId' => $request->all(),
                 'feedbacks' => $feedback->toArray()
             ], 200);
         }
