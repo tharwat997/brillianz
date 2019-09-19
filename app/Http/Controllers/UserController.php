@@ -6,6 +6,7 @@ use App\Course;
 use App\University;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -104,5 +105,18 @@ class UserController extends Controller
             ], 200);
         }
 
+    }
+
+    public function agentFeedback($id)
+    {
+        $feedback = DB::table('agent_feedback')->where('agent_id', '=', $id)
+            ->get();
+
+        if (isset($feedback)) {
+            return response()->json([
+                'status' => 'success',
+                'feedbacks' => $feedback->toArray()
+            ], 200);
+        }
     }
 }

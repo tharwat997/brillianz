@@ -7,6 +7,7 @@ use App\Course;
 use App\University;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -59,5 +60,26 @@ class StudentController extends Controller
         }
 
         return response()->json(['status' => 'success', 'user' => $user], 200);
+    }
+
+    public function createFeedback(Request $request)
+    {
+        $feedback = DB::table('agent_feedback')->where('agent_id', '=', $request->agentId)
+            ->where('feedback_giver_id', '=', $request->studentId)->first();
+
+        if ($feedback->count() >= 1) {
+            return response()->json(['status' => 'error', 'error' => 'Feedback already given for that agent'], 200);
+        } else {
+
+            DB::table('agent_feedback')->insert([
+                'feedback_giver_id' => $request->studentId,
+                'agent_id' => $request->agentId,
+                'feedback' => $request->feedback,
+            ]);
+
+            return response()->json(['status' => 'success'], 200);
+        }
+
+
     }
 }

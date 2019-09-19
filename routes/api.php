@@ -31,6 +31,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::get('users/{id}', 'UserController@show');
+Route::get('users/{id}/agent/feedback', 'UserController@agentFeedback');
 
 Route::prefix('admin')->group(function () {
 
@@ -62,4 +63,5 @@ Route::prefix('agent')->group(function () {
 Route::prefix('student')->group(function () {
     Route::get('all', 'StudentController@all');
     Route::post('enrollment', 'StudentController@enrollment');
+    Route::post('agent/feedback', 'StudentController@createFeedback');
 });
