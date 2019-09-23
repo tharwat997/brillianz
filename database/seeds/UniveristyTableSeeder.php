@@ -13,7 +13,7 @@ class UniveristyTableSeeder extends Seeder
     {
 
         \App\University::create([
-            'name' => 'Al Dar University College',
+            'name' => 'University of exeter dubai',
             'city_id' => 1
         ]);
 
@@ -34,33 +34,24 @@ class UniveristyTableSeeder extends Seeder
 
 
         \App\University::create([
-            'name' => 'Abu Dhabi University',
+            'name' => 'Al hosn uni',
             'city_id' => 3
         ]);
 
         \App\University::create([
-            'name' => 'Al Hosn University',
+            'name' => 'NYU Abu DHBAI uni',
             'city_id' => 3
         ]);
 
         \App\University::create([
-            'name' => 'Al Ain University of Science and Technology',
+            'name' => 'Khalifa bin Zayed Air university ',
             'city_id' => 4
         ]);
 
         \App\University::create([
-            'name' => 'INSEAD',
-            'city_id' => 4
-        ]);
-
-        \App\University::create([
-            'name' => 'Ajman University',
+            'name' => 'CUCA City University College of Ajman',
             'city_id' => 5
         ]);
 
-        \App\University::create([
-            'name' => 'Gulf Medical University',
-            'city_id' => 5
-        ]);
     }
 }

@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->integer('university_id');
             $table->text('description')->nullable();
+            $table->string('link')->nullable();
             $table->integer('cost');
             $table->timestamps();
         });
