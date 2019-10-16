@@ -120,4 +120,23 @@ class UserController extends Controller
             ], 200);
         }
     }
+
+    public function students()
+    {
+        $students = [];
+        $users = User::all();
+
+        if (isset($users)) {
+            foreach ($users as $user) {
+                if ($user->hasRole('student')) {
+                    array_push($students, $user);
+                }
+            }
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'agents' => $students
+        ], 200);
+    }
 }

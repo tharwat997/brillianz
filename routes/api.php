@@ -53,6 +53,8 @@ Route::prefix('admin')->group(function () {
     Route::post('uni/add', 'UniversityController@add');
     Route::post('uni/update', 'UniversityController@update');
     Route::post('uni/delete', 'UniversityController@delete');
+
+    Route::get('students', 'UserController@students');
 });
 
 Route::prefix('agent')->group(function () {

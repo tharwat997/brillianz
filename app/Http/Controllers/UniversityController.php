@@ -80,14 +80,30 @@ class UniversityController extends Controller
 
     public function agentRegister(Request $request)
     {
+        $agents = User::all();
+        $maxAgentsLimit = 0;
+
+        foreach ($agents as $agent) {
+            if (isset($agent->university_id)) {
+                if ($agent->university_id == $request->id) {
+                    $maxAgentsLimit++;
+                }
+            }
+        }
+
         $user = User::find($request->userId);
-        if (isset($user)) {
-            $user->university_id = $request->id;
-            $user->update();
-            return response()->json([
-                'status' => 'success',
-                'user' => $user
-            ]);
+
+        if ($maxAgentsLimit <= 5 ) {
+            if (isset($user)) {
+                $user->university_id = $request->id;
+                $user->update();
+                return response()->json([
+                    'status' => 'success',
+                    'user' => $user
+                ]);
+            }
+        } else {
+            return response()->json(['status' => 'error', 'error' => 'Max limit of agents are registered.']);
         }
     }
 }
